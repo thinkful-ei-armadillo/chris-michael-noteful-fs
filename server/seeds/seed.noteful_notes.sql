@@ -1,3 +1,5 @@
+--psql -U postgres -d noteful -f ./seeds/seed.noteful_notes.sql
+
 INSERT INTO noteful_notes (id, name, folder_id, content)
 VALUES
   (1, 'Dogs', '1', 'lorem ipsum'),
@@ -10,3 +12,5 @@ VALUES
   (8, 'Wolves', '3', 'lorem ipsum'),
   (9, 'Elephants', '2', 'lorem ipsum'),
   (10, 'Lions', '1','lorem ipsum'); 
+
+  ALTER SEQUENCE noteful_notes RESTART WITH 11; 
