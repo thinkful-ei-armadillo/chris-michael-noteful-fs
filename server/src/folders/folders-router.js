@@ -9,6 +9,7 @@ const foldersRouter = express.Router();
 const jsonParser = express.json();
 
 const serializeFolder = (folder) => ({
+  id: folder.id,
   name: xss(folder.name),
 });
 
