@@ -7,15 +7,10 @@ import config from '../config';
 export default class AddFolder extends Component {
   static contextType = Context;
 
-  state = {
-    error: null
-  };
-
   handleSubmit = e => {
     e.preventDefault();
-    const {name} = e.target; //what about id
+    const {name} = e.target; 
     const folder = {name: name.value};
-    this.setState({error: null});
     fetch(`${config.API_ENDPOINT}/folders`, {
       method: 'POST',
       body: JSON.stringify(folder),
@@ -36,7 +31,7 @@ export default class AddFolder extends Component {
         this.context.addFolder(data)
       })
       .catch(error => {
-        this.setState({error})
+        console.error(error)
       })
   }
   

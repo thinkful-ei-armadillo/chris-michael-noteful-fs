@@ -11,20 +11,14 @@ export default class AddNote extends Component {
   
   static contextType = Context;
 
-  state = {
-    error: null
-  };
-
   handleSubmit = e => {
     e.preventDefault();
-    const {name, modified, folderId, content} = e.target;
+    const {name, folderId, content} = e.target;
     const note = {
       name: name.value,
-      modified: modified.value,
       folderId: folderId.value,
       content: content.value
     };
-    this.setState({error: null});
     fetch(`${config.API_ENDPOINT}/notes`, {
       method: 'POST',
       body: JSON.stringify(note),
@@ -35,20 +29,19 @@ export default class AddNote extends Component {
     .then(res => {
       if(!res.ok){
         return res.json().then(error => {
-          throw error
+          throw new Error(error)
         })
       }
       return res.json()
     })
     .then(data => {
       name.value = ''
-      modified.value = ''
       folderId.value = ''
       content.value = ''
       this.context.addNote(data)
     })
     .catch(error => {
-      this.setState({error})
+      console.error(error)
     })
 }
 

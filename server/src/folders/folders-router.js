@@ -24,7 +24,8 @@ foldersRouter
       .catch(next); 
   })
   .post(jsonParser, (req, res, next) => {
-    const { newName } = req.body;
+    const { name } = req.body;
+    const newName = { name }; 
     if(!newName){
       return res.status(400).json({
         error: { message: 'Missing folder name in request body' } 
@@ -94,3 +95,5 @@ foldersRouter
       })
       .catch(next); 
   });
+
+module.exports = foldersRouter;
