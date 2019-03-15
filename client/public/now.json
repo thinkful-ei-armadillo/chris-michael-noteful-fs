@@ -1,0 +1,15 @@
+{
+"version": 2,
+"name": "noteful-app",
+"alias": "cjcarnivale-noteful-app", 
+"routes": [
+    {
+      "src": "^/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": ".*",
+      "dest": "/index.html"
+    }
+  ]
+}
